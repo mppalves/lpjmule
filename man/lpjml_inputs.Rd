@@ -4,39 +4,15 @@
 \alias{lpjml_inputs}
 \title{LPjmL input preparation}
 \usage{
-lpjml_inputs(
-  folder,
-  cells = 67420,
-  wyears = seq(1951, 2010, 5),
-  temp = "tas",
-  prec = "pr",
-  lwnet = "lwnet",
-  rsds = "rsds",
-  soil = "soil",
-  wet = "wet",
-  co2 = "CO2"
-)
+lpjml_inputs(folder, plotting = F, dataset_info)
 }
 \arguments{
 \item{folder}{Folder path for the input files}
 
-\item{cells}{Number of grid cells (67420)}
+\item{plotting}{\code{True} or \code{False} determing if plots from the data extracted will be plotted for checking.}
 
-\item{wyears}{Sequence of years to extracted}
-
-\item{temp}{strig that identifies the temperature file to be extracted}
-
-\item{prec}{strig that identifies the preciptation file to be extracted}
-
-\item{lwnet}{strig that identifies the long wave radiation file to be extracted}
-
-\item{rsds}{strig that identifies the short wave radiation file to be extracted}
-
-\item{soil}{strig that identifies the soil file to be extracted}
-
-\item{wet}{strig that identifies the wed days file to be extracted}
-
-\item{co2}{strig that identifies the temperature file to be extracted}
+\item{datasets_info}{object list containing information about the files that will be used that are going to be extracted.
+for more information plese check \link{dataset_info}.}
 }
 \description{
 Function `lpjml_output` read binary with the output of LPJmL runs and processes them into `dataframes`.

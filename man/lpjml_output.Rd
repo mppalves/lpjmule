@@ -4,27 +4,11 @@
 \alias{lpjml_output}
 \title{LPjmL output preparation}
 \usage{
-lpjml_output(
-  folder,
-  wyears = seq(1951, 2010, 10),
-  cells = 67420,
-  file_name = "pft_harvest.pft.bin",
-  crop = "mgrass",
-  water = "rainfed"
-)
+lpjml_output(folder, datasets_info)
 }
 \arguments{
-\item{folder}{Folder path for the input files}
-
-\item{wyears}{Sequence of years to extracted}
-
-\item{cells}{Number of grid cells (67420)}
-
-\item{file_name}{Name of the binary files containing LPJmL results}
-
-\item{crop}{Name of the crop to be extracted}
-
-\item{water}{Source of water, eiter `rainfed` or `irrigated`. Currently only `rainfed` is available}
+\item{datasets_info}{object list containing information about the files that will be used that are going to be extracted.
+for more information plese check \link{dataset_info}.}
 }
 \description{
 Function `lpjml_output` read binary with the output of LPJmL runs and processes them into `dataframes`.

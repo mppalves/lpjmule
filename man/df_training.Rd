@@ -8,7 +8,7 @@ df_training(
   lpjml_inputs,
   lpjml_output,
   input_levels = c(seq(0, 2, 0.2), 2.5),
-  cells = 67420
+  dataset_info
 )
 }
 \arguments{
