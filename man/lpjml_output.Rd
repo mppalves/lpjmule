@@ -4,11 +4,13 @@
 \alias{lpjml_output}
 \title{LPjmL output preparation}
 \usage{
-lpjml_output(folder, datasets_info)
+lpjml_output(folder, dataset_info)
 }
 \arguments{
-\item{datasets_info}{object list containing information about the files that will be used that are going to be extracted.
+\item{folder}{Folder path for the input files
 for more information plese check \link{dataset_info}.}
+
+\item{dataset_info}{object list containing information about the files that will be used that are going to be extracted.}
 }
 \description{
 Function `lpjml_output` read binary with the output of LPJmL runs and processes them into `dataframes`.

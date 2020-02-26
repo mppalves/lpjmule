@@ -18,7 +18,7 @@ df_training(
 
 \item{input_levels}{The breakdown of the LSU leves in the data ser as a vector.}
 
-\item{cells}{Number of grid cells (67420)}
+\item{dataset_info}{object list containing information about the files that will be used that are going to be extracted.}
 }
 \description{
 Function `df.training` combine together the output of the `lpjml_output` and `Lpjml_input` functions into a `features:label` format.

@@ -11,8 +11,7 @@ lpjml_inputs(folder, plotting = F, dataset_info)
 
 \item{plotting}{\code{True} or \code{False} determing if plots from the data extracted will be plotted for checking.}
 
-\item{datasets_info}{object list containing information about the files that will be used that are going to be extracted.
-for more information plese check \link{dataset_info}.}
+\item{dataset_info}{object list containing information about the files that will be used that are going to be extracted.}
 }
 \description{
 Function `lpjml_output` read binary with the output of LPJmL runs and processes them into `dataframes`.
