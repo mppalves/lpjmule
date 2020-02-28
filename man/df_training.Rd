@@ -12,13 +12,13 @@ df_training(
 )
 }
 \arguments{
-\item{lpjml_inputs}{input from function `Lpjml_input`}
+\item{lpjml_inputs}{Output from function `Lpjml_input`}
 
-\item{lpjml_output}{output from function `lpjml_output`}
+\item{lpjml_output}{Output from function `lpjml_output`}
 
 \item{input_levels}{The breakdown of the LSU leves in the data ser as a vector.}
 
-\item{dataset_info}{object list containing information about the files that will be used that are going to be extracted.}
+\item{dataset_info}{Object list containing information about the files that will be used that are going to be extracted.}
 }
 \description{
 Function `df.training` combine together the output of the `lpjml_output` and `Lpjml_input` functions into a `features:label` format.

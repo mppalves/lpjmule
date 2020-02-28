@@ -10,9 +10,6 @@
 grid
 }
 \description{
-The SSA baby names data comes from social security number (SSN) applications.
-SSA cards were first issued in 1936, but were only needed for people with
-an income. In 1986, the law changed effectively requiring all children to
-get an SSN at birth.
+Information about lpjml grid used for checking the if the input data was processed correctly
 }
 \keyword{datasets}

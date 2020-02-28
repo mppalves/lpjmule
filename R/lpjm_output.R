@@ -13,18 +13,18 @@
 #' @export lpjml_output
 
 lpjml_output <- function(folder, dataset_info) {
-  wyears <- dataset_info["wyears"][[1]]
-  cells <- dataset_info["cells"][[1]]
-  file_name <- dataset_info["file_name"][[1]]
-  crop <- dataset_info["crop"][[1]]
-  water <- dataset_info["water"][[1]]
-  years <- dataset_info["years"][[1]]
-  bands <- dataset_info["bands"][[1]]
-  soilcells <- dataset_info["soilcells"][[1]]
-  monthly <- dataset_info["monthly"][[1]]
-  syear <- dataset_info["syear"][[1]]
+  wyears     <- dataset_info["wyears"][[1]]
+  cells      <- dataset_info["cells"][[1]]
+  file_name  <- dataset_info["file_name"][[1]]
+  crop       <- dataset_info["crop"][[1]]
+  water      <- dataset_info["water"][[1]]
+  years      <- dataset_info["years"][[1]]
+  bands      <- dataset_info["bands"][[1]]
+  soilcells  <- dataset_info["soilcells"][[1]]
+  monthly    <- dataset_info["monthly"][[1]]
+  syear      <- dataset_info["syear"][[1]]
 
-  dirs <- list.dirs(path = folder)[-1]
+  dirs       <- list.dirs(path = folder)[-1]
 
   d.array <- array(NaN, dim = c(cells, length(dirs), length(wyears)), dimnames = list(1:cells, basename(dirs), wyears))
   for (lsu in 1:length(dirs)) {
