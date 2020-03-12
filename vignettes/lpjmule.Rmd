@@ -16,46 +16,83 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This package aims to process LPJml input and output files to create a dataframe that is used for traininig a machine learning model that emulates LPJmL.
+This package aims to process LPJml input and output files to create a data frame that is used for training a machine learning model that emulates LPJmL.
 
-The functions in this package are divided in thress groups: 
+The functions in this package are divided into three groups:
 
-* Processing and creating of the training data set: functions that create read and transforma LPJmL binary files into a single R dataframe ready to be used as input for the machine learning functions.
+* Processing and creating of the training data set: functions that create read and transform LPJmL binary files into a single R data frame ready to be used as input for the machine learning functions.
 * Machine learning functions:
-* Auxiliary and testing functions: a set of functions that test, the consistency of the results of other functions thought plots and the machine learning models, throught plots and statistical anaylsis.
+* Auxiliary and testing functions: a set of functions that test, the consistency of the results of other functions thought plots and the machine learning models, through plots and statistical analysis.
+
+## Organizing the input folder
+
+For this package to work, a strict organization of input files needs to be followed.
+The parameter `folder` that is required by most functions need to point at folder with the following structure, for example:
+
+* `[folder]lpjml_run_lsu_00`
+  + `[file]pft.bin`
+  + `[file]soilcarbon.bin`
+* `[folder]lpjml_run_lsu_01`
+* `[folder]lpjml_run_lsu_02`
+* `[folder]lpjml_run_lsu_03`
+* `[folder]lpjml_run_lsu_04`
+* `[folder]lpjml_run_lsu_05`
+* `[folder]lpjml_run_lsu_06`
+* `[folder]lpjml_run_lsu_07`
+* `[file]wet_wet_days.clm`
+* `[file]tas_temperature.clm`
+* `[file]soil_soil.bin`
+* `[file]lwnet_longwave radiation.clm`
+* `[file]rsds_shortwave radiation.clm`
+* `[file]CO2_CO2 concentration.clm`
+* `[file]pr_precipitation.clm`
 
 
+Each folder should contain the outputs of the simulations with its respective PFT results and soil carbon concentration.
+The seven lpjml input files should be stored in a parent file.
 
+## File naming
+
+Both input and output files will ve identified by string particles in their names, therefore, it important to add/keep string particles that identify those files correctly. As an example, the particles bellow are associated with the input files:
+
+  ```
+  temperature                   =  "tas",
+  precipitation                 =  "pr",
+  longwave radiation            =  "lwnet",
+  shortwave radiation           =  "rsds",
+  soil =                        =  "soil",
+  number of wetdays             =  "wet",
+  CO2 atmospheric concentration = "CO2"
+
+  ```
+As output files should be named identically between different simulations, instead of using string particles to identify them, the whole name of the file should be used when required.
 
 ## Data set info
 
-Data set info is a list of parameters used as input for the lpjm_inputs and lpjml_output functions that sumarise the information needed to sucessfully run these two functions.
-Bellow you find examples of how to set up data set infos to extracta both harvest and soil carbon data from LPJmL binaries.
+Data set info is a list of parameters used as input for the `lpjm_inputs`, `lpjml_output` and `training_warper` functions that summarise the information needed to successfully run these two functions.
+Below you find examples of how to set up `dataset_infos` to extract both harvest and soil carbon data from LPJmL binaries.
 
 ### Extracting harvest data
 
 ```{r setup}
-library(lpjmule)
-
-
 dataset_info = list(
-  
+
   #file string parts names
-  temp ="tas", 
-  prec ="pr", 
-  lwnet ="lwnet", 
-  rsds ="rsds", 
-  soil ="soil", 
-  wet ="wet", 
+  temp ="tas",
+  prec ="pr",
+  lwnet ="lwnet",
+  rsds ="rsds",
+  soil ="soil",
+  wet ="wet",
   co2 = "CO2",
-  
+
   #Shared variables
-  wyears = seq(1951,2099,10), 
-  cells = 67420, 
-  
-  #readLPJ specific variables more information on 
+  wyears = seq(1951,2099,10),
+  cells = 67420,
+
+  #readLPJ specific variables more information on
   #\code{\link{readLPJ}}
-  
+
   file_name = "pft_harvest.pft.bin",
   crop ="mgrass",
   water = "rainfed",
@@ -69,26 +106,24 @@ dataset_info = list(
 ### Extracting soil carbon data
 
 ```{r, fig.show='hold'}
-
-
 dataset_info = list(
-  
+
   #file string parts names
-  temp ="tas", 
-  prec ="pr", 
-  lwnet ="lwnet", 
-  rsds ="rsds", 
-  soil ="soil", 
-  wet ="wet", 
+  temp ="tas",
+  prec ="pr",
+  lwnet ="lwnet",
+  rsds ="rsds",
+  soil ="soil",
+  wet ="wet",
   co2 = "CO2",
-  
+
   #Shared variables
-  wyears = seq(1951,2099,10),  
-  cells = 67420, 
-  
-  #readLPJ specific variables more information on 
+  wyears = seq(1951,2099,10),
+  cells = 67420,
+
+  #readLPJ specific variables more information on
   #\code{\link{readLPJ}}
-  
+
   file_name = "soilc.bin",
   crop =1,
   water =1,
@@ -99,8 +134,46 @@ dataset_info = list(
   monthly = FALSE
 )
 
-
-
 ```
 
+## Usage Example
 
+```{r eval=FALSE, warning=FALSE}
+library(lpjmule)
+
+dataset_info = list(
+
+  #file string parts names
+  temp ="tas",
+  prec ="pr",
+  lwnet ="lwnet",
+  rsds ="rsds",
+  soil ="soil",
+  wet ="wet",
+  co2 = "CO2",
+
+  #Shared variables
+  wyears = seq(1951,2099,10),
+  cells = 67420,
+
+  #readLPJ specific variables more information on
+  #\code{\link{readLPJ}}
+
+  file_name = "pft_harvest.pft.bin",
+  crop ="mgrass",
+  water = "rainfed",
+  syear = 1951,
+  years = 149,
+  bands = 32,
+  soilcells = FALSE, #True (59199 cells), False (67420 cells)
+  monthly = FALSE,
+
+  #input levels should equal the levels used for each LPJml
+  input_levels = c(seq(0, 2, 0.2), 2.5)
+)
+
+setwd()
+
+training_warper("/p/projects/landuse/users/pedrosa/ML_gym/inputs/elevated",dataset_info)
+
+```
