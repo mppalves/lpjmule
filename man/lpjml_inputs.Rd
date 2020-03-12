@@ -4,7 +4,7 @@
 \alias{lpjml_inputs}
 \title{LPjmL input preparation}
 \usage{
-lpjml_inputs(folder, plotting = F, dataset_info)
+lpjml_inputs(folder, plotting = T, dataset_info)
 }
 \arguments{
 \item{folder}{Folder path for the input files}

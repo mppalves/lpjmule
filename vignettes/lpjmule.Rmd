@@ -1,0 +1,106 @@
+---
+title: "LPJml Emulator Building Tools"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lpjmule}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This package aims to process LPJml input and output files to create a dataframe that is used for traininig a machine learning model that emulates LPJmL.
+
+The functions in this package are divided in thress groups: 
+
+* Processing and creating of the training data set: functions that create read and transforma LPJmL binary files into a single R dataframe ready to be used as input for the machine learning functions.
+* Machine learning functions:
+* Auxiliary and testing functions: a set of functions that test, the consistency of the results of other functions thought plots and the machine learning models, throught plots and statistical anaylsis.
+
+
+
+
+## Data set info
+
+Data set info is a list of parameters used as input for the lpjm_inputs and lpjml_output functions that sumarise the information needed to sucessfully run these two functions.
+Bellow you find examples of how to set up data set infos to extracta both harvest and soil carbon data from LPJmL binaries.
+
+### Extracting harvest data
+
+```{r setup}
+library(lpjmule)
+
+
+dataset_info = list(
+  
+  #file string parts names
+  temp ="tas", 
+  prec ="pr", 
+  lwnet ="lwnet", 
+  rsds ="rsds", 
+  soil ="soil", 
+  wet ="wet", 
+  co2 = "CO2",
+  
+  #Shared variables
+  wyears = seq(1951,2099,10), 
+  cells = 67420, 
+  
+  #readLPJ specific variables more information on 
+  #\code{\link{readLPJ}}
+  
+  file_name = "pft_harvest.pft.bin",
+  crop ="mgrass",
+  water = "rainfed",
+  syear = 1951,
+  years = 149,
+  bands = 32,
+  soilcells = FALSE, #True (59199 cells), False (67420 cells)
+  monthly = FALSE
+)
+```
+### Extracting soil carbon data
+
+```{r, fig.show='hold'}
+
+
+dataset_info = list(
+  
+  #file string parts names
+  temp ="tas", 
+  prec ="pr", 
+  lwnet ="lwnet", 
+  rsds ="rsds", 
+  soil ="soil", 
+  wet ="wet", 
+  co2 = "CO2",
+  
+  #Shared variables
+  wyears = seq(1951,2099,10),  
+  cells = 67420, 
+  
+  #readLPJ specific variables more information on 
+  #\code{\link{readLPJ}}
+  
+  file_name = "soilc.bin",
+  crop =1,
+  water =1,
+  syear = 1951,
+  years = 149,
+  bands = 1,
+  soilcells = FALSE, #True (59199 cells), False (67420 cells)
+  monthly = FALSE
+)
+
+
+
+```
+
+

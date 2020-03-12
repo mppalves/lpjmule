@@ -3,5 +3,6 @@
 export(df_training)
 export(lpjml_inputs)
 export(lpjml_output)
+export(training_warper)
 import(lpjclass)
 import(raster)

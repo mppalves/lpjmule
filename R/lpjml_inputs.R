@@ -14,7 +14,7 @@
 #' @export lpjml_inputs
 
 
-lpjml_inputs <- function(folder, plotting = F, dataset_info) {
+lpjml_inputs <- function(folder, plotting = T, dataset_info) {
   cells <- dataset_info["cells"][[1]]
   wyears <- dataset_info["wyears"][[1]]
   temp <- dataset_info["temp"][[1]]
@@ -136,34 +136,50 @@ lpjml_inputs <- function(folder, plotting = F, dataset_info) {
   res <- list(temp, prec, wet, lwnet, rsds, co2, soil)
 
   if (plotting) {
-    
+    dir.create("./lpjml_input_plots")
+    setwd("./lpjml_input_plots")
     for (i in factor(wyears)) {
+      jpeg(paste0("Temperature",i,".jpg"),width = 800, height = 600) 
       plot(raster::rasterFromXYZ(cbind(grid, temp[, , i])), main = paste("Temperature", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Preciptation",i,".jpg"),width = 800, height = 600) 
       plot(raster::rasterFromXYZ(cbind(grid, prec[, , i])), main = paste("Preciptation", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Wet days",i,".jpg"),width = 800, height = 600)
       plot(raster::rasterFromXYZ(cbind(grid, wet[, , i])), main = paste("Wet days", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Long wave radiation",i,".jpg"),width = 800, height = 600) 
       plot(raster::rasterFromXYZ(cbind(grid, lwnet[, , i])), main = paste("Long wave radiation", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Short wave radiation",i,".jpg"),width = 800, height = 600) 
       plot(raster::rasterFromXYZ(cbind(grid, rsds[, , i])), main = paste("Short wave radiation", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Co2 concentration",i,".jpg"),width = 800, height = 600) 
       plot(raster::rasterFromXYZ(cbind(grid, co2[, , i])), main = paste("Co2 concentration", i))
+      dev.off()
     }
 
     for (i in factor(wyears)) {
+      jpeg(paste0("Soil type",i,".jpg"),width = 800, height = 600)
       plot(raster::rasterFromXYZ(cbind(grid, soil[, , i])), main = paste("Soil type", i))
+      dev.off()
     }
+    setwd("./..")
   }
   return(res)
 }

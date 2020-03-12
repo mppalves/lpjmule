@@ -44,3 +44,6 @@ vignettes/*.pdf
 *.clm
 *.dat
 *.rds
+inst/doc
+doc
+Meta
