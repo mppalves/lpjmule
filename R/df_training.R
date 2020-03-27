@@ -16,7 +16,11 @@
 df_training <- function(lpjml_inputs, lpjml_output, input_levels = c(seq(0, 2.0, 0.2), 2.5), dataset_info) {
   cells <- dataset_info["cells"][[1]]
   df <- cbind(lpjml_output,rep(input_levels, times = 1, each = cells), lpjml_inputs[[1]], lpjml_inputs[[2]], lpjml_inputs[[3]], lpjml_inputs[[4]], lpjml_inputs[[5]], lpjml_inputs[[6]], lpjml_inputs[[7]] )
+<<<<<<< HEAD
   colnames(df) <- c("lpjml_output", "lsu","temp", "prec", "wet", "lwnet", "rsds", "co2", "soil")
+=======
+  colnames(df) <- c("lpjml_output", "temp", "prec", "wet", "lwnet", "rsds", "co2", "soil", "lsu")
+>>>>>>> b8e56fa91b1a6894971eae14817de237d83cdd44
   
   soilpar <- data.frame(
     "soil"         = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
