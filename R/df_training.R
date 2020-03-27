@@ -15,8 +15,8 @@
 
 df_training <- function(lpjml_inputs, lpjml_output, input_levels = c(seq(0, 2.0, 0.2), 2.5), dataset_info) {
   cells <- dataset_info["cells"][[1]]
-  df <- cbind(lpjml_output, lpjml_inputs[[1]], lpjml_inputs[[2]], lpjml_inputs[[3]], lpjml_inputs[[4]], lpjml_inputs[[5]], lpjml_inputs[[6]], lpjml_inputs[[7]], rep(input_levels, times = 1, each = cells))
-  colnames(df) <- c("lpjml_output", "temp", "prec", "wet", "lwnet", "rsds", "co2", "soil", "lsu")
+  df <- cbind(lpjml_output,rep(input_levels, times = 1, each = cells), lpjml_inputs[[1]], lpjml_inputs[[2]], lpjml_inputs[[3]], lpjml_inputs[[4]], lpjml_inputs[[5]], lpjml_inputs[[6]], lpjml_inputs[[7]] )
+  colnames(df) <- c("lpjml_output", "lsu","temp", "prec", "wet", "lwnet", "rsds", "co2", "soil")
   
   soilpar <- data.frame(
     "soil"         = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
@@ -31,7 +31,7 @@ df_training <- function(lpjml_inputs, lpjml_output, input_levels = c(seq(0, 2.0,
     "tdiff_100"    = c(0.555, 0.491, 0.799, 0.653, 0.542, 0.867, 0.797, 0.661, 0.863, 0.661, 0.85, 0.896, 4.089),
     "cond_pwp"     = c( 1.388, 1.177, 1.72, 1.369, 1.27, 1.498, 1.276, 1.219, 1.053, 1.219, 0.601, 0.303, 8.768),
     "cond_100"     = c(1.719, 1.516, 2.347, 1.967, 1.675, 2.527, 2.34, 1.999, 2.53, 1.999, 2.706, 3.431, 8.657),
-    "cond_100_ice" =  c( 3.233, 2.853, 4.060, 3.685, 3.134, 4.360, 4.233, 3.803, 4.547, 3.803, 4.778, 5.423, 8.727)
+    "cond_100_ice" = c(3.233, 2.853, 4.060, 3.685, 3.134, 4.360, 4.233, 3.803, 4.547, 3.803, 4.778, 5.423, 8.727)
   )
   
   df = merge(df,soilpar, by = "soil")

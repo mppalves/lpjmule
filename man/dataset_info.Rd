@@ -4,7 +4,9 @@
 \name{dataset_info}
 \alias{dataset_info}
 \title{Dataset information}
-\format{An object of class \code{list} of length 17.}
+\format{
+An object of class \code{list} of length 17.
+}
 \usage{
 dataset_info = list(
  

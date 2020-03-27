@@ -1,7 +1,7 @@
 Package: lpjmule
 Type: Package
 Title: This package reads LPJmL inputs and outputs to create an emulator of of LPJmL that can be emebeded in MAgPIE
-Version: 0.1.0
+Version: 0.1.1
 Author: Marcos Alves
 Maintainer: The package maintainer <pedrosa@pik-potsdam.de>
 Depends: R (>= 3.5.0)
@@ -10,7 +10,7 @@ Description: More about what it does (maybe more than one line)
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Imports:
     lpjclass (>= 1.14),
 Suggests:
