@@ -4,8 +4,10 @@
 \name{grid}
 \alias{grid}
 \title{Applicants.}
-\format{A data frame with 3 variables: \code{year}, \code{sex} and
-  \code{grid}}
+\format{
+A data frame with 3 variables: \code{year}, \code{sex} and
+  \code{grid}
+}
 \usage{
 grid
 }
