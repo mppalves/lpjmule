@@ -3,15 +3,12 @@
 \name{lpjml_inputs}
 \alias{lpjml_inputs}
 \title{LPjmL input preparation}
-\usage{
-lpjml_inputs(folder, plotting = T, dataset_info)
-}
 \arguments{
 \item{folder}{Folder path for the input files}
 
-\item{plotting}{\code{True} or \code{False} determing if plots from the data extracted will be plotted for checking.}
-
 \item{dataset_info}{object list containing information about the files that will be used that are going to be extracted.}
+
+\item{plotting}{\code{True} or \code{False} determing if plots from the data extracted will be plotted for checking.}
 }
 \description{
 Function `lpjml_output` read binary with the output of LPJmL runs and processes them into `dataframes`.

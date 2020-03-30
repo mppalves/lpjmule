@@ -7,7 +7,7 @@
 #'
 #' @param dataset_info object list containing information about the files that will be used that are going to be extracted.
 #' @param folder Folder path for the input files
-#' for more information plese check \link{dataset_info}.
+#' for more information plese check @Run \code{vignette("lpjmule", package = "lpjmule")} .
 #' @author Marcos Alves \email{mppalves@gmail.com}
 #' @import lpjclass
 #' @export lpjml_output
