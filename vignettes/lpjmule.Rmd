@@ -87,7 +87,7 @@ dataset_info = list(
   co2 = "CO2",
 
   #Shared variables
-  wyears = seq(1951,2099,10),
+  wyears = seq(1951,2099,1),
   cells = 67420,
 
   #readLPJ specific variables more information on
@@ -99,39 +99,43 @@ dataset_info = list(
   syear = 1951,
   years = 149,
   bands = 32,
-  soilcells = FALSE, #True (59199 cells), False (67420 cells)
-  monthly = FALSE
+  soilcells = T, #True (59199 cells), False (67420 cells)
+  monthly = F,
+  input_levels = c(seq(0, 2.0, 0.2), 2.5),
+  rel = "0.5-to-c200_area_weighted_mean.spam"
 )
 ```
 ### Extracting soil carbon data
 
 ```{r, fig.show='hold'}
+
 dataset_info = list(
-
+  
   #file string parts names
-  temp ="tas",
-  prec ="pr",
-  lwnet ="lwnet",
-  rsds ="rsds",
-  soil ="soil",
-  wet ="wet",
+  temp ="tas", 
+  prec ="pr", 
+  lwnet ="lwnet", 
+  rsds ="rsds", 
+  soil ="soil", 
+  wet ="wet", 
   co2 = "CO2",
-
+  
   #Shared variables
-  wyears = seq(1951,2099,10),
-  cells = 67420,
-
-  #readLPJ specific variables more information on
-  #\code{\link{readLPJ}}
-
-  file_name = "soilc.bin",
+  wyears = seq(1951,2099,1), 
+  cells = 67420, 
+  
+  #readLPJ specific variables more information on readLPJ
+  
+  file_name = "pft_harvest.pft.bin",
   crop =1,
   water =1,
   syear = 1951,
   years = 149,
   bands = 1,
-  soilcells = FALSE, #True (59199 cells), False (67420 cells)
-  monthly = FALSE
+  soilcells = T, #True (59199 cells), False (67420 cells)
+  monthly = F,
+  input_levels = c(seq(0, 2.0, 0.2), 2.5),
+  rel = "0.5-to-c200_area_weighted_mean.spam"
 )
 
 ```
@@ -142,38 +146,34 @@ dataset_info = list(
 library(lpjmule)
 
 dataset_info = list(
-
+  
   #file string parts names
-  temp ="tas",
-  prec ="pr",
-  lwnet ="lwnet",
-  rsds ="rsds",
-  soil ="soil",
-  wet ="wet",
+  temp ="tas", 
+  prec ="pr", 
+  lwnet ="lwnet", 
+  rsds ="rsds", 
+  soil ="soil", 
+  wet ="wet", 
   co2 = "CO2",
-
+  
   #Shared variables
-  wyears = seq(1951,2099,10),
-  cells = 67420,
-
-  #readLPJ specific variables more information on
-  #\code{\link{readLPJ}}
-
+  wyears = seq(1951,2099,1), 
+  cells = 67420, 
+  
+  #readLPJ specific variables more information on readLPJ
+  
   file_name = "pft_harvest.pft.bin",
   crop ="mgrass",
   water = "rainfed",
   syear = 1951,
   years = 149,
   bands = 32,
-  soilcells = FALSE, #True (59199 cells), False (67420 cells)
-  monthly = FALSE,
-
-  #input levels should equal the levels used for each LPJml
-  input_levels = c(seq(0, 2, 0.2), 2.5)
+  soilcells = T, #True (59199 cells), False (67420 cells)
+  monthly = F,
+  input_levels = c(seq(0, 2.0, 0.2), 2.5),
+  rel = "0.5-to-c200_area_weighted_mean.spam"
 )
 
-setwd()
-
-training_warper("/p/projects/landuse/users/pedrosa/ML_gym/inputs/elevated",dataset_info = dataset_info)
+harverst.df <- training_warper("/p/projects/landuse/users/pedrosa/ML_gym/inputs/elevated",dataset_info = dataset_info)
 
 ```

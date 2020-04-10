@@ -17,7 +17,7 @@
 #' @importFrom utils read.table
 #' @export lpjml_inputs
 
-load("R/sysdata.rda")
+load("R/grid.rda")
 
 lpjml_inputs <- function(folder, plotting = T, dataset_info , .grid = grid) {
   cells <- dataset_info["cells"][[1]]
