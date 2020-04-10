@@ -17,9 +17,10 @@
 #' @importFrom utils read.table
 #' @export lpjml_inputs
 
-load("R/grid.rda")
+
 
 lpjml_inputs <- function(folder, plotting = T, dataset_info , .grid = grid) {
+data("grid", package = "lpjmule")
   cells <- dataset_info["cells"][[1]]
   wyears <- dataset_info["wyears"][[1]]
   temp <- dataset_info["temp"][[1]]

@@ -10,11 +10,13 @@
 #'
 #' @author Marcos Alves \email{mppalves@gmail.com}
 #' @import tidyr
+#' @import luscale
 #' @import magclass
 #' @export training_warper2
 
 
 training_warper2 <- function(folder, dataset_info, .plotting = F) {
+  file_name  <- dataset_info["file_name"][[1]]
   rel <- dataset_info["rel"][[1]]
   y = lpjml_inputs2("C:/Users/pedrosa/github/Models/LPJmL-emulator/inputs", dataset_info = dataset_info, plotting = .plotting)
   z = lpjml_output2("C:/Users/pedrosa/github/Models/LPJmL-emulator/inputs", dataset_info = dataset_info)
@@ -25,5 +27,6 @@ training_warper2 <- function(folder, dataset_info, .plotting = F) {
   x = pivot_longer(x, cols = matches("^[0-9.]*$"))
   colnames(x)[c(dim(x)[2]-1,dim(x)[2])] <- c("lsu","output")
   x = transform(x, lsu = as.numeric(lsu))
+  saveRDS(x,paste0(file_name,"_training.rds"))
   return(x)
 }

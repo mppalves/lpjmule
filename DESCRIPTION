@@ -1,7 +1,7 @@
 Package: lpjmule
 Type: Package
 Title: This package reads LPJmL inputs and outputs to create an emulator of of LPJmL that can be emebeded in MAgPIE
-Version: 0.2.5
+Version: 0.2.7
 Author: Marcos Alves
 Maintainer: The package maintainer <pedrosa@pik-potsdam.de>
 Depends: R (>= 3.5.0)
@@ -14,7 +14,11 @@ RoxygenNote: 7.1.0
 Imports:
     lpjclass (>= 1.14),
     raster (>= 3.0),
-    grDevices
+    grDevices,
+    abind,
+    dplyr,
+    magclass, 
+    tidyr
 Suggests:
     knitr,
     rmarkdown

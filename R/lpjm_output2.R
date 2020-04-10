@@ -10,7 +10,6 @@
 #' for more information plese check @Run \code{vignette("lpjmule", package = "lpjmule")} .
 #' @author Marcos Alves \email{mppalves@gmail.com}
 #' @import lpjclass
-#' @import luscale
 #' @import magclass
 #' @export lpjml_output2
 
